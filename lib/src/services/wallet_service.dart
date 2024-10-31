@@ -79,31 +79,21 @@ class StacksWalletService {
       params.onFinish(StacksSession.fromJson(response));
     });
 
-    js.context['flutterStacksCancel'] = js.allowInterop(() {
+    debugPrint('Attempting web connection...');
+
+    if (js.context.hasProperty('StacksProvider')) {
+      debugPrint('StacksProvider found in window');
+      _connectWithExistingProvider(
+          params.appName, params.appIcon, params.onFinish, params.onCancel);
+    } else {
+      debugPrint('No StacksProvider found, redirecting to wallet');
+      final walletUrl = Uri.parse('https://wallet.hiro.so/wallet/install');
+      await launchUrl(
+        walletUrl,
+        mode: LaunchMode.externalApplication,
+      );
       params.onCancel();
-    });
-
-    final jsScript = '''
-      if (typeof window.StacksProvider !== 'undefined') {
-        window.connect.showConnect({
-          appDetails: {
-            name: "${params.appName}",
-            icon: "${params.appIcon}"
-          },
-          network: "${networkConfig.type.name}",
-          onFinish: (data) => {
-            window.flutterStacksCallback(JSON.stringify(data));
-          },
-          onCancel: () => {
-            window.flutterStacksCancel();
-          }
-        });
-      } else {
-        window.location.href = "${_walletStoreUrl}";
-      }
-    ''';
-
-    js.context.callMethod('eval', [jsScript]);
+    }
   }
 
   Future<void> _connectAndroid(ConnectParams params) async {
@@ -219,6 +209,53 @@ class StacksWalletService {
     } catch (e) {
       throw Exception('Error getting network status: $e');
     }
+  }
+
+  void _connectWithExistingProvider(
+    String appName,
+    String appIcon,
+    Function(StacksSession) onFinish,
+    Function() onCancel,
+  ) {
+    js.context['flutterStacksCallback'] = js.allowInterop((dynamic data) {
+      debugPrint('Received callback data: $data');
+      try {
+        final Map<String, dynamic> response = json.decode(data.toString());
+        final session = StacksSession.fromJson(response);
+        onFinish(session);
+      } catch (e) {
+        debugPrint('Error processing callback: $e');
+        onCancel();
+      }
+    });
+
+    js.context['flutterStacksCancel'] = js.allowInterop(() {
+      debugPrint('Connection cancelled');
+      onCancel();
+    });
+
+    try {
+      final jsProvider = js.context['StacksProvider'];
+      final connectOptions = js.JsObject.jsify({
+        'appDetails': {
+          'name': appName,
+          'icon': appIcon,
+        },
+        'onFinish': 'window.flutterStacksCallback',
+        'onCancel': 'window.flutterStacksCancel',
+        'network': networkConfig.type.name,
+      });
+
+      jsProvider.callMethod('connect', [connectOptions]);
+    } catch (e) {
+      debugPrint('Error calling connect: $e');
+      onCancel();
+    }
+  }
+
+  bool isWalletInstalled() {
+    if (!kIsWeb) return false;
+    return js.context.hasProperty('StacksProvider');
   }
 
   void dispose() {
