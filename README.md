@@ -1,4 +1,4 @@
-```markdown
+
 # Flutter Stacks Connect Package
 
 A Flutter implementation for interacting with the Stacks blockchain network. This package provides cross-platform support for connecting to Stacks wallets and performing blockchain operations.
@@ -234,7 +234,7 @@ Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTIN
 - [GitHub Repository](https://github.com/BuildOnStack/flutter_stacks_connect)
 - [Issue Tracker](https://github.com/BuildOnStack/flutter_stacks_connect/issues)
 
-```
+
 
 ## LICENSE
 ```
