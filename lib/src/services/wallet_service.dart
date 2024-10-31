@@ -7,20 +7,6 @@ import 'package:android_intent_plus/android_intent.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/models.dart';
 
-class ConnectParams {
-  final String appName;
-  final String appIcon;
-  final Function(StacksSession) onFinish;
-  final Function() onCancel;
-
-  ConnectParams({
-    required this.appName,
-    required this.appIcon,
-    required this.onFinish,
-    required this.onCancel,
-  });
-}
-
 class StacksWalletService {
   final http.Client _client;
   final NetworkConfig networkConfig;
@@ -83,8 +69,8 @@ class StacksWalletService {
 
     if (js.context.hasProperty('StacksProvider')) {
       debugPrint('StacksProvider found in window');
-      _connectWithExistingProvider(
-          params.appName, params.appIcon, params.onFinish, params.onCancel);
+      _connectWithExistingProvider(params.walletId, params.appName,
+          params.appIcon, params.onFinish, params.onCancel);
     } else {
       debugPrint('No StacksProvider found, redirecting to wallet');
       final walletUrl = Uri.parse('https://wallet.hiro.so/wallet/install');
@@ -212,6 +198,7 @@ class StacksWalletService {
   }
 
   void _connectWithExistingProvider(
+    String walletId,
     String appName,
     String appIcon,
     Function(StacksSession) onFinish,
@@ -238,6 +225,7 @@ class StacksWalletService {
       final jsProvider = js.context['StacksProvider'];
       final connectOptions = js.JsObject.jsify({
         'appDetails': {
+          'id': walletId,
           'name': appName,
           'icon': appIcon,
         },

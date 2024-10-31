@@ -63,20 +63,22 @@ class WalletProvider extends ChangeNotifier {
 
   /// Connect to a wallet
   Future<void> connect({
+    required String walletId,
     required String appName,
     required String appIcon,
   }) async {
     try {
       await _walletService.connect(
         ConnectParams(
+          walletId: walletId,
           appName: appName,
           appIcon: appIcon,
-          onFinish: (sessionData) async {
-            _session = sessionData;
+          onFinish: (session) async {
+            _session = session;
             _isConnected = true;
             await _storage.write(
               key: 'session',
-              value: json.encode(_session!.toJson()),
+              value: json.encode(session.toJson()),
             );
             notifyListeners();
           },

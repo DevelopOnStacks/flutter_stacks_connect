@@ -6,6 +6,15 @@ part of 'clarity_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$NoneCVImpl _$$NoneCVImplFromJson(Map<String, dynamic> json) => _$NoneCVImpl(
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$NoneCVImplToJson(_$NoneCVImpl instance) =>
+    <String, dynamic>{
+      'runtimeType': instance.$type,
+    };
+
 _$UIntCVImpl _$$UIntCVImplFromJson(Map<String, dynamic> json) => _$UIntCVImpl(
       BigInt.parse(json['value'] as String),
       $type: json['runtimeType'] as String?,

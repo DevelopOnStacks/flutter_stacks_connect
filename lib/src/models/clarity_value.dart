@@ -5,6 +5,7 @@ part 'clarity_value.g.dart';
 
 @freezed
 class ClarityValue with _$ClarityValue {
+  const factory ClarityValue.none() = NoneCV;
   const factory ClarityValue.uint(BigInt value) = UIntCV;
   const factory ClarityValue.int(BigInt value) = IntCV;
   const factory ClarityValue.bool(bool value) = BoolCV;

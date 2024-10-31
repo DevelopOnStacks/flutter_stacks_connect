@@ -8,3 +8,4 @@ export 'session.dart';
 export 'signature.dart';
 export 'transaction.dart';
 export 'wallet_provider.dart';
+export 'wallet_info.dart';

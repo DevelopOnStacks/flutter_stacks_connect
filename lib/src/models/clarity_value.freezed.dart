@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 ClarityValue _$ClarityValueFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
+    case 'none':
+      return NoneCV.fromJson(json);
     case 'uint':
       return UIntCV.fromJson(json);
     case 'int':
@@ -43,6 +45,7 @@ ClarityValue _$ClarityValueFromJson(Map<String, dynamic> json) {
 mixin _$ClarityValue {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -55,6 +58,7 @@ mixin _$ClarityValue {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -67,6 +71,7 @@ mixin _$ClarityValue {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -80,6 +85,7 @@ mixin _$ClarityValue {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -92,6 +98,7 @@ mixin _$ClarityValue {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -104,6 +111,7 @@ mixin _$ClarityValue {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -139,6 +147,169 @@ class _$ClarityValueCopyWithImpl<$Res, $Val extends ClarityValue>
 
   /// Create a copy of ClarityValue
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$NoneCVImplCopyWith<$Res> {
+  factory _$$NoneCVImplCopyWith(
+          _$NoneCVImpl value, $Res Function(_$NoneCVImpl) then) =
+      __$$NoneCVImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoneCVImplCopyWithImpl<$Res>
+    extends _$ClarityValueCopyWithImpl<$Res, _$NoneCVImpl>
+    implements _$$NoneCVImplCopyWith<$Res> {
+  __$$NoneCVImplCopyWithImpl(
+      _$NoneCVImpl _value, $Res Function(_$NoneCVImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClarityValue
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NoneCVImpl implements NoneCV {
+  const _$NoneCVImpl({final String? $type}) : $type = $type ?? 'none';
+
+  factory _$NoneCVImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NoneCVImplFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ClarityValue.none()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NoneCVImpl);
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(BigInt value) uint,
+    required TResult Function(BigInt value) int,
+    required TResult Function(bool value) bool,
+    required TResult Function(List<int> buffer) buffer,
+    required TResult Function(String content) string,
+    required TResult Function(List<ClarityValue> values) list,
+    required TResult Function(Map<String, ClarityValue> data) tuple,
+    required TResult Function(String address) principal,
+  }) {
+    return none();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
+    TResult? Function(BigInt value)? uint,
+    TResult? Function(BigInt value)? int,
+    TResult? Function(bool value)? bool,
+    TResult? Function(List<int> buffer)? buffer,
+    TResult? Function(String content)? string,
+    TResult? Function(List<ClarityValue> values)? list,
+    TResult? Function(Map<String, ClarityValue> data)? tuple,
+    TResult? Function(String address)? principal,
+  }) {
+    return none?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(BigInt value)? uint,
+    TResult Function(BigInt value)? int,
+    TResult Function(bool value)? bool,
+    TResult Function(List<int> buffer)? buffer,
+    TResult Function(String content)? string,
+    TResult Function(List<ClarityValue> values)? list,
+    TResult Function(Map<String, ClarityValue> data)? tuple,
+    TResult Function(String address)? principal,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
+    required TResult Function(UIntCV value) uint,
+    required TResult Function(IntCV value) int,
+    required TResult Function(BoolCV value) bool,
+    required TResult Function(BufferCV value) buffer,
+    required TResult Function(StringCV value) string,
+    required TResult Function(ListCV value) list,
+    required TResult Function(TupleCV value) tuple,
+    required TResult Function(PrincipalCV value) principal,
+  }) {
+    return none(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
+    TResult? Function(UIntCV value)? uint,
+    TResult? Function(IntCV value)? int,
+    TResult? Function(BoolCV value)? bool,
+    TResult? Function(BufferCV value)? buffer,
+    TResult? Function(StringCV value)? string,
+    TResult? Function(ListCV value)? list,
+    TResult? Function(TupleCV value)? tuple,
+    TResult? Function(PrincipalCV value)? principal,
+  }) {
+    return none?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
+    TResult Function(UIntCV value)? uint,
+    TResult Function(IntCV value)? int,
+    TResult Function(BoolCV value)? bool,
+    TResult Function(BufferCV value)? buffer,
+    TResult Function(StringCV value)? string,
+    TResult Function(ListCV value)? list,
+    TResult Function(TupleCV value)? tuple,
+    TResult Function(PrincipalCV value)? principal,
+    required TResult orElse(),
+  }) {
+    if (none != null) {
+      return none(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NoneCVImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class NoneCV implements ClarityValue {
+  const factory NoneCV() = _$NoneCVImpl;
+
+  factory NoneCV.fromJson(Map<String, dynamic> json) = _$NoneCVImpl.fromJson;
 }
 
 /// @nodoc
@@ -217,6 +388,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -232,6 +404,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -247,6 +420,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -266,6 +440,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -281,6 +456,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -296,6 +472,7 @@ class _$UIntCVImpl implements UIntCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -409,6 +586,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -424,6 +602,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -439,6 +618,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -458,6 +638,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -473,6 +654,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -488,6 +670,7 @@ class _$IntCVImpl implements IntCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -602,6 +785,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -617,6 +801,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -632,6 +817,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -651,6 +837,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -666,6 +853,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -681,6 +869,7 @@ class _$BoolCVImpl implements BoolCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -802,6 +991,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -817,6 +1007,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -832,6 +1023,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -851,6 +1043,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -866,6 +1059,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -881,6 +1075,7 @@ class _$BufferCVImpl implements BufferCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -996,6 +1191,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -1011,6 +1207,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -1026,6 +1223,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -1045,6 +1243,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -1060,6 +1259,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -1075,6 +1275,7 @@ class _$StringCVImpl implements StringCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -1197,6 +1398,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -1212,6 +1414,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -1227,6 +1430,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -1246,6 +1450,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -1261,6 +1466,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -1276,6 +1482,7 @@ class _$ListCVImpl implements ListCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -1398,6 +1605,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -1413,6 +1621,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -1428,6 +1637,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -1447,6 +1657,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -1462,6 +1673,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -1477,6 +1689,7 @@ class _$TupleCVImpl implements TupleCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
@@ -1591,6 +1804,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() none,
     required TResult Function(BigInt value) uint,
     required TResult Function(BigInt value) int,
     required TResult Function(bool value) bool,
@@ -1606,6 +1820,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? none,
     TResult? Function(BigInt value)? uint,
     TResult? Function(BigInt value)? int,
     TResult? Function(bool value)? bool,
@@ -1621,6 +1836,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
     TResult Function(BigInt value)? uint,
     TResult Function(BigInt value)? int,
     TResult Function(bool value)? bool,
@@ -1640,6 +1856,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(NoneCV value) none,
     required TResult Function(UIntCV value) uint,
     required TResult Function(IntCV value) int,
     required TResult Function(BoolCV value) bool,
@@ -1655,6 +1872,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NoneCV value)? none,
     TResult? Function(UIntCV value)? uint,
     TResult? Function(IntCV value)? int,
     TResult? Function(BoolCV value)? bool,
@@ -1670,6 +1888,7 @@ class _$PrincipalCVImpl implements PrincipalCV {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoneCV value)? none,
     TResult Function(UIntCV value)? uint,
     TResult Function(IntCV value)? int,
     TResult Function(BoolCV value)? bool,
