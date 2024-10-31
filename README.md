@@ -233,7 +233,6 @@ Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTIN
 
 ## Additional information
 
-- [Documentation] [No Yet]https://pub.dev/documentation/flutter_stacks_connect/latest/
 - [GitHub Repository](https://github.com/DevelopOnStacks/flutter_stacks_connect)
 - [Issue Tracker](https://github.com/DevelopOnStacks/flutter_stacks_connect/issues)
 
