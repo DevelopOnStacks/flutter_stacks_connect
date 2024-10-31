@@ -11,7 +11,7 @@ class WalletProvider extends ChangeNotifier {
   final TransactionService _transactionService;
   final ProfileService _profileService;
   final FlutterSecureStorage _storage;
-  final NetworkConfig _config;
+  NetworkConfig _config;
 
   StacksSession? _session;
   bool _isConnected = false;
@@ -90,6 +90,17 @@ class WalletProvider extends ChangeNotifier {
       _isConnected = false;
       notifyListeners();
       rethrow;
+    }
+  }
+
+  /// Change Network configuration
+  Future<void> setNetwork(NetworkConfig newConfig) async {
+    if (_config.type != newConfig.type || _config.url != newConfig.url) {
+      _config = newConfig;
+      if (_isConnected) {
+        await disconnect();
+      }
+      notifyListeners();
     }
   }
 
