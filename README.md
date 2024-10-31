@@ -20,7 +20,10 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_stacks_connect: ^0.1.0
+    flutter_stacks_connect:
+    git:
+      url: https://github.com/DevelopOnStacks/flutter_stacks_connect.git
+      ref: main
 ```
 
 ## Basic Usage
@@ -230,9 +233,9 @@ Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTIN
 
 ## Additional information
 
-- [Documentation](https://pub.dev/documentation/flutter_stacks_connect/latest/)
-- [GitHub Repository](https://github.com/BuildOnStack/flutter_stacks_connect)
-- [Issue Tracker](https://github.com/BuildOnStack/flutter_stacks_connect/issues)
+- [Documentation] [No Yet]https://pub.dev/documentation/flutter_stacks_connect/latest/
+- [GitHub Repository](https://github.com/DevelopOnStacks/flutter_stacks_connect)
+- [Issue Tracker](https://github.com/DevelopOnStacks/flutter_stacks_connect/issues)
 
 
 
